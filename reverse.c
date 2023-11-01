@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
     FILE *input = fopen(input_file, "r");
     if (input == NULL)
     {
-        printf("The file cannont be opened. The program will now exit.\n");
-        return 1
+        printf("The input file cannont be opened. The program will now exit.\n");
+        return 1;
     }
 
     // Read header
@@ -49,13 +49,17 @@ int main(int argc, char *argv[])
     }
 
     // Open output file for writing
-    // TODO #5
-
+    FILE *output = fopen(output_file, "w");
+    if (output == NULL)
+    {
+        printf("The output file cannont be opened. The program will now exit.\n");
+        return 1;
+    }
     // Write header to file
-    // TODO #6
+    fwrite(&input_header, sizeof(WAVHEADER), 1, output);
 
     // Use get_block_size to calculate size of block
-    // TODO #7
+    
 
     // Write reversed audio to file
     // TODO #8
@@ -63,16 +67,16 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    BYTE check = {"W", "A", "V", "E"};
+    BYTE check[] = {'W', 'A', 'V', 'E'};
 
     for (int i  = 0; i < 4; i++)
     {
         if (header.format[i] != check[i])
         {
-            return 1
+            return 1;
         }
     }
-    
+
     return 0;
 }
 

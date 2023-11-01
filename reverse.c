@@ -37,7 +37,8 @@ int main(int argc, char *argv[])
     }
 
     // Read header
-    // TODO #3
+    WAVHEADER input_header;
+    fread(&input_header, sizeof(WAVHEADER), 1, input);
 
     // Use check_format to ensure WAV format
     // TODO #4

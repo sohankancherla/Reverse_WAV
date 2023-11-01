@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "wav.h"
 
@@ -10,7 +11,29 @@ int get_block_size(WAVHEADER header);
 int main(int argc, char *argv[])
 {
     // Ensure proper usage
-    // TODO #1
+    if (argc != 3)
+    {
+        printf("Incorrect Number of Arguments\n");
+        printf("Usage: %s <input.wav> <output.wav>\n", argv[0]);
+        return 1;
+    }
+
+    char* input_file = argv[1];
+    char* output_file = argv[2];
+
+    char *ext = strrchr(input_file, '.');
+    char *ext2 = strrchr(output_file, '.');
+
+    if (ext != NULL && strcmp(ext, ".wav") != 0)
+    {
+        printf("Input File is not a WAV file");
+        return 1;
+    }
+    if (ext2 != NULL && strcmp(ext2, ".wav") != 0)
+    {
+        printf("Output File is not a WAV file");
+        return 1;
+    }
 
     // Open input file for reading
     // TODO #2

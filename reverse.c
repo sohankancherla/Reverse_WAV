@@ -21,22 +21,20 @@ int main(int argc, char *argv[])
     char* input_file = argv[1];
     char* output_file = argv[2];
 
-    char *ext = strrchr(input_file, '.');
-    char *ext2 = strrchr(output_file, '.');
+    char *ext = strrchr(output_file, '.');
 
     if (ext != NULL && strcmp(ext, ".wav") != 0)
     {
-        printf("Input File is not a WAV file");
+        printf("Output is not a WAV file\n");
         return 1;
     }
-    if (ext2 != NULL && strcmp(ext2, ".wav") != 0)
-    {
-        printf("Output File is not a WAV file");
-        return 1;
-    }
-
     // Open input file for reading
-    // TODO #2
+    FILE *input = fopen(input_file, "r");
+    if (input == NULL)
+    {
+        printf("The file cannont be opened. The program will now exit.\n");
+        return 1
+    }
 
     // Read header
     // TODO #3

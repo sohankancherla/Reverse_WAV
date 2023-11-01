@@ -41,7 +41,12 @@ int main(int argc, char *argv[])
     fread(&input_header, sizeof(WAVHEADER), 1, input);
 
     // Use check_format to ensure WAV format
-    // TODO #4
+    int format = check_format(input_header);
+    if (format == 1)
+    {
+        printf("Input is not a WAV file\n");
+        return 1;
+    }
 
     // Open output file for writing
     // TODO #5
@@ -58,7 +63,16 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    // TODO #4
+    BYTE check = {"W", "A", "V", "E"};
+
+    for (int i  = 0; i < 4; i++)
+    {
+        if (header.format[i] != check[i])
+        {
+            return 1
+        }
+    }
+    
     return 0;
 }
 

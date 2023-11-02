@@ -20,4 +20,9 @@ output file: path for the reversed audio file (must be .wav extension)
 
 ## Output
 
-Input: 
+Input: https://github.com/sohankancherla/Reverse_WAV/assets/30853467/4a210b41-1926-483d-8959-e29c40b0ae40
+
+
+
+
+

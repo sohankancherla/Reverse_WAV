@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     FILE *output = fopen(output_file, "w");
     if (output == NULL)
     {
-        printf("The output file cannont be opened. The program will now exit.\n");
+        printf("The output file cannot be opened. The program will now exit.\n");
         return 1;
     }
     // Write header to file
